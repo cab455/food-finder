@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>FoodFavorites</title>
+{% endblock %}
+
+{% block body %}
+<h1>Favorites</h1>
+<div class="favs">
+{% if favorites|length < 1 %}
+    <h4>Looks like you don't have any favorites yet... Get cookin', kitten!</h4>
+{% else %}
+    <ul>
+    {% for fav in favorites %}
+        <li>
+            <a href="{{ fav.url }}">{{ fav.recipe_name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Recipe Matches</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="mmatches">
+    {% if recipe_matches|length < 1 %}
+        <h1>No recipes found!</h1>
+    {% else %}
+        <h1>Great news, we found some recipes!</h1>
+        <ul>
+        {% for row in recipe_matches %}
+            <li>
+                <form action="/favs" method="POST">
+                    <input type="hidden" name="row" value="{{ row['id'] }}">
+                    <input type="submit" value="Add to favorites">
+                </form>
+                <a href="{{ row['url'] }}">{{ row['recipe_name'] }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <br>
+    {% endif %}
+</div>
+
+{% endblock %}

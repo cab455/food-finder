@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title style="text-align: center;">FoodFinder Home</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Welcome to the FoodFinder Website!</h1>
+    <br>
+    <!--Row 1: Monday & Tuesday-->
+    <div class="ingredients">
+        <h4>Enter your ingredients below!</h4>
+        <br>
+        <div class="form">
+            <form action="/recipes" method="POST">
+                <label for="protein">Protein</label><br>
+                <input type="text" name="protein" id="protein"><br><br>
+                <label for="starch">Starch</label><br>
+                <input type="text" name="starch" id="starch"><br><br>
+                <label for="non-starch">Non-starch</label><br>
+                <input type="text" name="non-starch" id="non-starch"><br><br>
+                <input type="submit" value="Search"><br><br>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+        <!--<div class="right">
+            <div class="weekday">
+                <h4>Tuesday</h4>
+            </div>
+            <div class="tform">
+                    <label for="tprotein">Protein</label><br>
+                    <input type="text" name="tprotein" id="tprotein"><br><br>
+                    <label for="tstarch">Starch</label><br>
+                    <input type="text" name="tstarch" id="tstarch"><br><br>
+                    <label for="tnon-starch">Non-starch</label><br>
+                    <input type="text" name="tnon-starch" id="tnon-starch"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    ROW 2: Wednesday & Thursday
+    <div class="row2">
+        <div class="left">
+            <div class="weekday">
+                <h4>Wednesday</h4>
+            </div>
+            <div class="wform">
+                <form action="/" method="POST">
+                    <label for="protein">Protein</label><br>
+                    <input type="text" name="protein" id="protein"><br><br>
+                    <label for="starch">Starch</label><br>
+                    <input type="text" name="starch" id="starch"><br><br>
+                    <label for="non-starch">Non-starch</label><br>
+                    <input type="non-starch" name="non-starch" id="non-starch"><br><br>
+                </form>
+            </div>
+            <br>
+        </div>
+        <div class="right">
+            <div class="weekday">
+                <h4>Thursday</h4>
+            </div>
+            <div class="thform">
+                <form action="/" method="POST">
+                    <label for="protein">Protein</label><br>
+                    <input type="text" name="protein" id="protein"><br><br>
+                    <label for="starch">Starch</label><br>
+                    <input type="text" name="starch" id="starch"><br><br>
+                    <label for="non-starch">Non-starch</label><br>
+                    <input type="non-starch" name="non-starch" id="non-starch"><br><br>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    ROW 3: Friday
+    <div class="row3">
+        <div class="weekday3">
+            <h4>Friday</h4>
+        </div>
+        <div class="fform">
+            <form action="/" method="POST">
+                <label for="protein">Protein</label>
+                <input type="text" name="protein" id="protein"><br><br>
+                <label for="starch">Starch</label>
+                <input type="text" name="starch" id="starch"><br><br>
+                <label for="non-starch">Non-starch</label>
+                <input type="text" name="non-starch" id="non-starch"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>-->

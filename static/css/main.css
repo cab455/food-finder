@@ -1,0 +1,109 @@
+html, body {
+    margin: 0 auto;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: aquamarine;
+}
+
+h1 {
+    color: olive;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+h4 {
+    font-size: 24px;
+    text-align: center;
+    color: navy;
+}
+
+
+h5 {
+    font-size: 14px;
+    text-align: center; 
+    color: red;
+    padding-top: 0;
+}
+
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+    /*display: flex;
+    flex-direction: column;*/
+}
+
+.ingredients, .login, .signup {
+    display: block;
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: fantasy;
+}
+
+.mmatches, .favs {
+    width: 800px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 32px;
+}
+
+nav a {
+    color: indigo;
+    font-size: 18px;
+}
+
+.mmatches li {
+    margin-bottom: 12px;
+}
+
+.login, .signup {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 48px;
+}
+
+
+/*NOTE: ul and li elements have padding and
+margin by default, must set to zero if you 
+want to change their alignments*/
+.signuplist {
+    text-align: center;
+}
+
+.signuplist ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+}
+
+.signuplist li {
+    float: left;
+    padding: 0;
+    padding-left: 2px;
+    font-size: 14px;
+    color: red;
+}
+
+.login ul, li {
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 12px;
+}
+
+

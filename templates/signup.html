@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>FoodFinder Signup</title>
+{% endblock %}
+
+{% block body %}
+<h1>Welcome To Foodfinder!</h1>
+<h4>Sign up below to access some a-MEOW-zing dishes!</h4>
+<div class="content">
+    <div class="signuplist">
+        {% if msgs|length > 0 %}
+            {% for msg in msgs %}
+                <ul>
+                    <li>{{ msg }}</li>
+                </ul>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="signup">
+        <form action="/signup" method="POST">
+            <label for="name">Enter your name</label><br>
+            <input type="text" name="name" id="name" required="required"><br><br>
+            <label for="email">Enter your email</label><br>
+            <input type="text" name="email" id="email" required="required"><br><br>
+            <label for="username">Choose a username</label><br>
+            <input type="text" name="username" id="username" required="required"><br><br>
+            <label for="password">Enter your password</label><br>
+            <label for="password" style="font-size: 14px;">(Must be a minimum of 8 characters)</label><br>
+            <input type="text" name="password" id="password" required="required"><br><br>
+            <input type="submit" value="Sign up!">
+        </form>
+    </div>
+</div>
+{% endblock %}
