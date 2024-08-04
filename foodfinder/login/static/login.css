@@ -1,0 +1,21 @@
+h5 {
+    font-size: 14px;
+    text-align: center; 
+    color: red;
+    padding-top: 0;
+}
+
+.login {
+    display: block;
+    text-align: center;
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 48px;
+}
+
+.login ul, li {
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 12px;
+}

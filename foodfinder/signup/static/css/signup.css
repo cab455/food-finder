@@ -1,0 +1,33 @@
+.signup {
+    display: block;
+    text-align: center;
+}
+
+.signup {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 48px;
+}
+
+/*NOTE: ul and li elements have padding and
+margin by default, must set to zero if you 
+want to change their alignments*/
+.signuplist {
+    text-align: center;
+}
+
+.signuplist ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+}
+
+.signuplist li {
+    float: left;
+    padding: 0;
+    padding-left: 2px;
+    font-size: 14px;
+    color: red;
+}
+

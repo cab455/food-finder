@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('login_bp.static', filename='login.css') }}">
+{% endblock %}
+
 {% block head %}
 <title>FoodFinder Login</title>
 {% endblock %}
