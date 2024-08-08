@@ -1,3 +1,4 @@
+{% from "_formhelpers.html" import render_field %}
 {% extends 'base.html' %}
 
 {% block stylesheet %}
@@ -14,14 +15,11 @@
 <h4>Login below to access some a-MEOW-zing dishes!</h4>
 <div class="content">
     <div class="login">
-    {% if msgs|length > 0 %}
-        <h5 style="text-align: center; font-size: 14px; color: red;">{{ msgs[0] }}</h5>
-    {% endif %}
-        <form action="/login" method="POST">
-            <label for="usename">Username</label><br>
-            <input type="text" name="username" id="username" required="required"><br><br>
-            <label for="password">Password</label><br>
-            <input type="text" name="password" id="password" required="required"><br><br>
+        <form action="/" method="POST" novalidate>
+            <dl>
+                {{ render_field(form.username) }}
+                {{ render_field(form.password) }}
+            </dl>
             <input type="submit" value="Login">
         </form>
     </div>

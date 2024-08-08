@@ -12,6 +12,7 @@
            <li><a href="{{ url_for('favs_bp.favs')  }}">Favorites</a></li>
            {% if not current_user.is_authenticated %}
               <li><a href="{{ url_for('login_bp.login') }}">Login</a></li>
+              <li><a href="{{ url_for('signup_bp.signup') }}">Sign Up!</a></li>
            {% endif %}
            {% if current_user.is_authenticated %}
               <li><a href="{{ url_for('login_bp.login') }}">Logout</a></li>

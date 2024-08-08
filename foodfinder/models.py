@@ -4,6 +4,7 @@ from .__init__ import db
 #API for user authentication
 from flask_login import LoginManager, UserMixin, current_user, logout_user, login_required
 import datetime as datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 #creating association table for roles/users
 roles_users = db.Table('roles_users', 
@@ -21,6 +22,12 @@ class User(db.Model, UserMixin):
     active = db.Column(db.Boolean)
     roles = db.relationship('Role', secondary=roles_users, backref=db.backref('users', lazy='dynamic'))
     #favorites = db.relationship('Favorite', backref='user', lazy=True)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_hash_password(self, hashed_password, password):
+        return check_password_hash(hashed_password, password)
 
     #def is_authenticated(self):
     #    return False 

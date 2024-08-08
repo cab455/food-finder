@@ -45,6 +45,18 @@ form {
     font-family: fantasy;
 }
 
+dt {
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+dd {
+    margin: 0 auto;
+    padding-bottom: 8px;
+}
+
 .mmatches, .favs {
     width: 800px;
     margin: 0 auto;
@@ -80,28 +92,18 @@ nav a {
 /*NOTE: ul and li elements have padding and
 margin by default, must set to zero if you 
 want to change their alignments*/
-.signuplist {
-    text-align: center;
+
+
+
+input[type=submit] {
+    font-weight: bold;
 }
 
-.signuplist ul {
-    display: inline-block;
+.errors ul, li {
     margin: 0;
     padding: 0;
-    padding-top: 5px;
+    font-weight: bold;
+    color: darkred;
+    text-align: left;
 }
 
-.signuplist li {
-    float: left;
-    padding: 0;
-    padding-left: 2px;
-    font-size: 14px;
-    color: red;
-}
-
-.login ul, li {
-    font-size: 12px;
-    margin: 0 auto;
-    padding: 0;
-    padding-bottom: 12px;
-}

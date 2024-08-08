@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from flask import current_app as app
+from foodfinder.forms import SearchForm
 
 #Configure home Blueprint
 #dunder name set to 'home_bp'
@@ -18,4 +19,7 @@ home_bp = Blueprint(
 @home_bp.route('/home', methods=['GET'])
 #@login_required
 def home():
-    return render_template('home.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        print("Search")
+    return render_template('home.html', form=form)

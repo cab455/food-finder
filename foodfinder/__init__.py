@@ -27,7 +27,7 @@ def create_app():
     app = Flask(__name__, instance_relative_config=False)
 
     #configure and setup location of db
-    app.config['SECRET_KEY'] = 'tisasecret'
+    app.config['SECRET_KEY'] = 'tisasecret' #prevents cross-site request forgery
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foodfinder.db'
     #need to add a salt for the hash_password
     #app.config['SECURITY_PASSWORD_SALT'] = 'tissecretsalt'

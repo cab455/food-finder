@@ -1,3 +1,4 @@
+{% from "_formhelpers.html" import render_field %}
 {% extends 'base.html' %}
 
 
@@ -15,13 +16,12 @@
         <h4>Enter your ingredients below!</h4>
         <br>
         <div class="form">
-            <form action="/recipes" method="POST">
-                <label for="protein">Protein</label><br>
-                <input type="text" name="protein" id="protein"><br><br>
-                <label for="starch">Starch</label><br>
-                <input type="text" name="starch" id="starch"><br><br>
-                <label for="non-starch">Non-starch</label><br>
-                <input type="text" name="non-starch" id="non-starch"><br><br>
+            <form action="/recipes" method="POST" novalidate>
+                <dl>
+                    {{ render_field(form.protein) }}
+                    {{ render_field(form.starches) }}
+                    {{render_field(form.nonstarches) }}
+                </dl>
                 <input type="submit" value="Search"><br><br>
             </form>
         </div>
