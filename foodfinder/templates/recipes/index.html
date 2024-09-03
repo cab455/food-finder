@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
-{% block head %}
+{% block title %} Recipes {% endblock %}
+
+{% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/recipes.css') }}">
-<title>Recipe Matches</title>
 {% endblock %}
 
 

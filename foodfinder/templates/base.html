@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     {% block stylesheet %}{% endblock %}
     <nav>
@@ -15,11 +16,10 @@
               <li><a href="{{ url_for('signup_bp.signup') }}">Sign Up!</a></li>
            {% endif %}
            {% if current_user.is_authenticated %}
-              <li><a href="{{ url_for('login_bp.login') }}">Logout</a></li>
+              <li><a href="{{ url_for('login_bp.logout') }}">Logout</a></li>
            {% endif %}
         </ul>
-    </nav>
-    {% block head %}{% endblock %} 
+    </nav> 
 </head>
 <body>
     {% block body %}{% endblock %}

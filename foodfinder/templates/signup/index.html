@@ -1,11 +1,12 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends 'base.html' %}
 
+{% block title %} FoodFinder Signup {% endblock %}
 
-{% block head %}
+{% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
-<title>FoodFinder Signup</title>
 {% endblock %}
+
 
 {% block body %}
 <h1>Welcome To Foodfinder!</h1>
@@ -14,6 +15,7 @@
     <div class="signup">
         <form action="/signup" method="POST" novalidate>
             <dl>
+                {{ form.csrf_token() }}
                 {{ render_field(form.name) }}
                 {{ render_field(form.email) }}
                 {{ render_field(form.username) }}

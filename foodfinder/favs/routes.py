@@ -1,13 +1,8 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
 
-
-favs_bp = Blueprint(
-    'favs_bp', __name__,
-    template_folder='templates',
-    static_folder='static'
-)
-
+from foodfinder.favs import favs_bp
+from foodfinder.models.recipe import Recipe
 
 #Accessing the url "http://127.0.0.1/favs" triggers the "favs"
 #function which renders the "favs" view (method=GET)
@@ -23,11 +18,11 @@ def favs():
     #click on "Favorites" link on home page
     if request.method == 'GET':
         favorites = [] #Recipes.query.order_by(Recipes.recipe_name).all()
-        return render_template("favs.html", favorites=favorites)
+        return render_template("favs/index.html", favorites=favorites)
     #click on "Add to Favorites" button on recipes page
     elif request.method == 'POST':
         new_fav = []
         new_fav_id = int(request.form['row']) #Recipes.query.get(id).id
         temp = Recipe.query.get(new_fav_id)
         new_fav.append(temp)
-        return render_template('favs.html', favorites=new_fav)
+        return render_template('favs/index.html', favorites=new_fav)

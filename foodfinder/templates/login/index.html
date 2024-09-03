@@ -1,12 +1,11 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends 'base.html' %}
 
+{% block title %} FoodFinder Login {% endblock %}
+
+
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('login_bp.static', filename='login.css') }}">
-{% endblock %}
-
-{% block head %}
-<title>FoodFinder Login</title>
 {% endblock %}
 
 
@@ -17,6 +16,7 @@
     <div class="login">
         <form action="/" method="POST" novalidate>
             <dl>
+                {{ form.csrf_token() }}
                 {{ render_field(form.username) }}
                 {{ render_field(form.password) }}
             </dl>

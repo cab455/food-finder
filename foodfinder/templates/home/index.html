@@ -1,11 +1,12 @@
 {% from "_formhelpers.html" import render_field %}
 {% extends 'base.html' %}
 
+{% block title %} FoodFinder Home {% endblock %}
 
-{% block head %}
+{% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-<title style="text-align: center;">FoodFinder Home</title>
 {% endblock %}
+
 
 {% block body %}
 <div class="content">
@@ -20,7 +21,7 @@
                 <dl>
                     {{ render_field(form.protein) }}
                     {{ render_field(form.starches) }}
-                    {{render_field(form.nonstarches) }}
+                    {{ render_field(form.nonstarches) }}
                 </dl>
                 <input type="submit" value="Search"><br><br>
             </form>

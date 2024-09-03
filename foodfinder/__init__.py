@@ -1,9 +1,11 @@
 #Application with divisional splitting
 
-import pandas as pd
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from config import Config
+from foodfinder.extensions import db, login_manager
+
+import pandas as pd
+#from flask_login import LoginManager
 
 #API for user authentication
 #deprecated
@@ -19,55 +21,52 @@ from flask_login import LoginManager
 #id attribute: used for CSS/JS
 #Flash-Security: authentication API good for dbs
 
-#instantiating the db with the instantiated flask app
-db = SQLAlchemy()
 
-def create_app():
+
+#Flask application factory function
+def create_app(config_class=Config):
     #instantiate flask app object
-    app = Flask(__name__, instance_relative_config=False)
-
-    #configure and setup location of db
-    app.config['SECRET_KEY'] = 'tisasecret' #prevents cross-site request forgery
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foodfinder.db'
-    #need to add a salt for the hash_password
-    #app.config['SECURITY_PASSWORD_SALT'] = 'tissecretsalt'
+    app = Flask(__name__)
+    #bcrypt = Bcrypt()
+    #Import config values to configure app
+    app.config.from_object(config_class)
 
     db.init_app(app)
-
-    login_manager = LoginManager(app)
-    login_manager.login_view = 'login_bp.login'
     login_manager.init_app(app)
     
     #import User class to use in load_user function
-    from .models import User
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+    #from foodfinder.models.old import User
+    #@login_manager.user_loader
+    #def load_user(user_id):
+    #    return db.session.execute(db.select(User).get(int(user_id))).scalar()
     
-    #read the csv containing the recipes into a dataframe for future ref
-    recipes = pd.read_csv('recipes.csv')
-    recipes = recipes[['recipe_name', 'ingredients', 'url']].dropna()
-
-
+    #Create db tables and populate Recipes table with data from csv
     with app.app_context():
+        #import module for db models before creating tables in db
+        from foodfinder.models.recipe import Recipe, Favorite
+        from foodfinder.models.user import User
         #create db, populate with recipe data from imported csv
         db.create_all()
+        #read the csv containing the recipes into a dataframe for future ref
+        recipes = pd.read_csv('recipes.csv')
+        recipes = recipes[['recipe_name', 'ingredients', 'url']].dropna()
         recipes.to_sql(name='recipe', con=db.engine, if_exists='replace', index=True, index_label="ID")
 
-        #import classes for views
-        from .favs import favs
-        from .home import home
-        from .login import login
-        from .recipes import recipes
-        from .signup import signup
+    #import classes for blueprints
+    from foodfinder.login import login_bp
+    from foodfinder.signup import signup_bp
+    from foodfinder.home import home_bp
+    from foodfinder.recipes import recipes_bp
+    from foodfinder.favs import favs_bp
+        
+    #register blueprints
+    app.register_blueprint(login_bp)
+    app.register_blueprint(signup_bp)
+    app.register_blueprint(home_bp)
+    app.register_blueprint(recipes_bp)
+    app.register_blueprint(favs_bp)
+        
 
-        #register blueprint for each view
-        app.register_blueprint(favs.favs_bp)
-        app.register_blueprint(home.home_bp)
-        app.register_blueprint(login.login_bp)
-        app.register_blueprint(recipes.recipes_bp)
-        app.register_blueprint(signup.signup_bp)
-
-        return app
+    return app
     
 

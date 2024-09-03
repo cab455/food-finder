@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
-{% block head %}
+{% block title %} Favorites {% endblock %}
+
+{% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/favs.css') }}">
-<title>FoodFavorites</title>
 {% endblock %}
+
 
 {% block body %}
 <h1>Favorites</h1>
