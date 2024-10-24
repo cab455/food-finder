@@ -3,16 +3,18 @@
 
 {% block title %} FoodFinder Signup {% endblock %}
 
-{% block stylesheet %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% block content %}
+<h1>Welcome To Foodfinder!</h1>
+<h4>Sign up below to access some a-MEOW-zing dishes!</h4>
 {% endblock %}
 
 
 {% block body %}
-<h1>Welcome To Foodfinder!</h1>
-<h4>Sign up below to access some a-MEOW-zing dishes!</h4>
 <div class="content">
     <div class="signup">
+        {% if error %}
+        <p><strong>{{error}}</strong></p>
+        {% endif %}
         <form action="/signup" method="POST" novalidate>
             <dl>
                 {{ form.csrf_token() }}

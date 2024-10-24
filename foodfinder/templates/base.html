@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> {% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    {% block stylesheet %}{% endblock %}
     <nav>
-        <ul>
+        <ul class="navbar">
            <li><a href="{{ url_for('home_bp.home')  }}">Home</a></liv>
            <li><a href="{{ url_for('favs_bp.favs')  }}">Favorites</a></li>
            {% if not current_user.is_authenticated %}
@@ -22,6 +21,16 @@
     </nav> 
 </head>
 <body>
+    {% block content %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
     {% block body %}{% endblock %}
 </body>
 </html>

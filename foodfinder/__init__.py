@@ -5,7 +5,6 @@ from config import Config
 from foodfinder.extensions import db, login_manager
 
 import pandas as pd
-#from flask_login import LoginManager
 
 #API for user authentication
 #deprecated
@@ -34,23 +33,23 @@ def create_app(config_class=Config):
     db.init_app(app)
     login_manager.init_app(app)
     
-    #import User class to use in load_user function
-    #from foodfinder.models.old import User
-    #@login_manager.user_loader
-    #def load_user(user_id):
-    #    return db.session.execute(db.select(User).get(int(user_id))).scalar()
-    
     #Create db tables and populate Recipes table with data from csv
     with app.app_context():
         #import module for db models before creating tables in db
         from foodfinder.models.recipe import Recipe, Favorite
         from foodfinder.models.user import User
         #create db, populate with recipe data from imported csv
-        db.create_all()
-        #read the csv containing the recipes into a dataframe for future ref
-        recipes = pd.read_csv('recipes.csv')
-        recipes = recipes[['recipe_name', 'ingredients', 'url']].dropna()
-        recipes.to_sql(name='recipe', con=db.engine, if_exists='replace', index=True, index_label="ID")
+        db.create_all() #db.create_all(app=create_app())
+        if not Recipe.query.all():
+            #read the csv containing the recipes into a dataframe for future ref
+            #Add code to call on method from sep load_db to check the ddb and populate the
+            #recipe table accordingly
+            recipes = pd.read_csv('recipes.csv')
+            recipes = recipes[['recipe_name', 'ingredients', 'url']].dropna()
+            recipes.to_sql(name='recipe', con=db.engine, if_exists='append', index=False)
+        #Recipe.add_recipes('recipes.csv')
+        
+        
 
     #import classes for blueprints
     from foodfinder.login import login_bp

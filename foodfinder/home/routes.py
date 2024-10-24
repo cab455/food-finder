@@ -12,6 +12,4 @@ from foodfinder.home import home_bp
 @login_required
 def home():
     form = SearchForm()
-    #if form.validate_on_submit():
-    #    print("Search")
     return render_template('home/index.html', form=form)

@@ -4,23 +4,26 @@
 {% block title %} FoodFinder Login {% endblock %}
 
 
-{% block stylesheet %}
-<link rel="stylesheet" href="{{ url_for('login_bp.static', filename='login.css') }}">
-{% endblock %}
 
-
-{% block body %}
+{% block content %}
 <h1>Welcome To Foodfinder!</h1>
 <h4>Login below to access some a-MEOW-zing dishes!</h4>
+{% endblock %}
+
+{% block body %}
 <div class="content">
     <div class="login">
+        {% if error %}
+            <p><strong>{{error}}</strong></p>
+        {% endif %}
         <form action="/" method="POST" novalidate>
             <dl>
                 {{ form.csrf_token() }}
                 {{ render_field(form.username) }}
                 {{ render_field(form.password) }}
             </dl>
-            <input type="submit" value="Login">
+            <input type="submit" value="Login" style="margin-right: 4px;">
+            <a href="{{ url_for('login_bp.forgotpassword')}}">Forgot Password?</a>
         </form>
     </div>
 </div>

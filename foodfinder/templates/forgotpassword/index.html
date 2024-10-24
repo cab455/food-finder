@@ -1,0 +1,30 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends 'base.html' %}
+
+{% block title %} Password Change Form {% endblock %}
+
+
+{% block content %}
+<h1>Update Password Form</h1>
+<h4>Please enter your new password information below</h4>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="forgotpassword">
+        {% if error %}
+        <p><strong>{{error}}</strong></p>
+        {% endif %}
+        <form action="/forgotpassword" method="POST" novalidate>
+            <dl>
+                {{ form.csrf_token() }}
+                {{ render_field(form.username) }}
+                {{ render_field(form.old_password) }}
+                {{ render_field(form.new_password) }}
+                {{ render_field(form.new_password_repeat) }}
+            </dl>
+            <input type="submit" value="Update Password">
+        </form>
+    </div>
+</div>
+{% endblock %}
